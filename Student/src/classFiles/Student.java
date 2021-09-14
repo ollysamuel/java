@@ -48,7 +48,7 @@ public class Student
 	
 	public double calculateAverage()
 	{
-		return (mathScore + englishScore + scienceScore) / 3; 
+		return (mathScore + englishScore + scienceScore) / 3.0; 
 	}
 	
 	public static double getFee()

@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Main 
 {
-
 	public static void main(String[] args) 
 	{
 		// declare array list of student accounts
@@ -23,25 +22,30 @@ public class Main
 		{
 			System.out.println("Enter English results for " + accountList.get(i).getName() + ": ");
 			int eng = keyboard.nextInt();
+			System.out.println();
 			
 			System.out.println("Enter Maths results for " + accountList.get(i).getName() + ": ");
 			int maths = keyboard.nextInt();
+			System.out.println();
 			
 			System.out.println("Enter Science results for " + accountList.get(i).getName() + ": ");
 			int science = keyboard.nextInt();
+			System.out.println();
 			
 			accountList.get(i).enterMarks(eng, maths, science);
 		}
 		
+		keyboard.close();
+		
 		for (Student item : accountList)
 		{
 			System.out.println("Name: " + item.getName() + "  ");
-			System.out.println("Number: " + item.getNumber());
+			System.out.println("Account Number: " + item.getNumber());
 			System.out.println("Maths score: " + item.getMathsMark() + 
 								"  English score: " + item.getEnglishMark() + 
 									"  Science score: " + item.getScienceMark());
+			System.out.println("Average mark: " + item.calculateAverage());
+			System.out.println();
 		}
-
 	}
-
 }

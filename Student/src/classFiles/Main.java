@@ -26,6 +26,7 @@ public class Main
 		accountList.add(new Student("56724654", "Chloe Turner"));
 		accountList.add(new Student("68391432", "Jamie Wiston"));
 		
+		// input grades
 		for (int i = 0; i < accountList.size(); i++)
 		{
 			System.out.println("Enter English results for " + accountList.get(i).getName() + ": ");
@@ -45,6 +46,7 @@ public class Main
 		
 		keyboard.close();
 		
+		// display results and calculate average
 		for (Student item : accountList)
 		{
 			System.out.println("Name: " + item.getName() + "  ");

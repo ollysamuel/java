@@ -1,3 +1,11 @@
+/*
+ * Student grade tracker Version 1.0
+ * 
+ * Author: Oliver Samuel
+ * 
+ * Date: 14/09/2021
+ */
+
 package classFiles;
 
 import java.util.ArrayList;

@@ -17,6 +17,8 @@ public class Main
 		String tempNumber, tempName;
 		double tempPrice;
 		
+		StockItem.setSalesTax(10);
+		
 		// input item details
 		System.out.print("Enter the stock number: ");
 		tempNumber = keyboardString.nextLine();

@@ -6,6 +6,7 @@ public class StockItem
 	private String stockNumber, name;
 	private double price;
 	private int totalStock = 0;
+	private static double salesTax = 17.5; 
 	
 	// constructor
 	public StockItem(String stockNumIn, String nameIn, double priceIn)
@@ -51,5 +52,9 @@ public class StockItem
 	{
 		return totalStock * price;
 	}
-
+	
+	public static void setSalesTax(double salesTaxIn)
+	{
+		salesTax = salesTaxIn;
+	}
 }

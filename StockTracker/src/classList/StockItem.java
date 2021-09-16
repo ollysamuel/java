@@ -53,6 +53,11 @@ public class StockItem
 		return totalStock * price;
 	}
 	
+	public static double getSalesTax()
+	{
+		return salesTax;
+	}
+	
 	public static void setSalesTax(double salesTaxIn)
 	{
 		salesTax = salesTaxIn;

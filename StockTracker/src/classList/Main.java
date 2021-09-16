@@ -27,6 +27,9 @@ public class Main
 		System.out.print("Enter the price of the item: ");
 		tempPrice = keyboard.nextDouble();
 		
+		keyboard.close();
+		keyboardString.close();
+		
 		// Create a new item of stock using the values that were entered by the user
 		StockList.add(new StockItem(tempNumber, tempName, tempPrice));
 		

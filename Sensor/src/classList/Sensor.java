@@ -13,7 +13,7 @@ public class Sensor
 	
 	public Sensor(double pressureIn)
 	{
-			pressure = pressureIn;
+		pressure = pressureIn;
 	}
 	
 	// methods

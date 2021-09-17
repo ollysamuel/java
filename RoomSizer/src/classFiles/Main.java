@@ -47,7 +47,7 @@ public class Main
 						return;
 				default: System.out.println();
 						 System.out.println("Please enter a number 1-4");
-				}
+			}
 			System.out.println();
 		} while (choice != 4);
 	}

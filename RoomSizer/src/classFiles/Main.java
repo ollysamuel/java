@@ -33,15 +33,16 @@ public class Main
 			switch (choice) 
 			{
 				case 1: apart1.addRoom(enterDimension("length: "), enterDimension("width: "));
-					break;
+						break;
 				case 2: System.out.print("What room area would you like?: ");
 						System.out.println(apart1.getRoomArea(keyboard.nextInt()) + "m^2");
-					break;
+						break;
 				case 3: System.out.print("What room width would you like?: ");
 						System.out.println(apart1.getRoomWidth(keyboard.nextInt()) + "m");
-					break;
+						break;
 				case 4: System.out.print("What room length would you like?: ");
 						System.out.println(apart1.getRoomLength(keyboard.nextInt()) + "m");
+						break;
 				case 5: keyboard.close();
 						return;
 				default: System.out.println();

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Apartment 
 {
-	private static ArrayList<Oblong>rooms = new ArrayList<>();
+	private ArrayList<Oblong>rooms = new ArrayList<>();
 	
 	// methods
 	public void addRoom(double lengthIn, double widthIn)
@@ -42,7 +42,7 @@ public class Apartment
 			return 0.0;
 	}
 	
-	static boolean roomExists(int roomNum)
+	private boolean roomExists(int roomNum)
 	{
 		if (roomNum < 1 || roomNum > rooms.size())
 		{

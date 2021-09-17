@@ -7,7 +7,7 @@ public class Main
 	public static void main(String[] args) 
 	{
 		// variables
-		int choice, room;
+		int choice;
 		
 		// create objects
 		Apartment apart1 = new Apartment();
@@ -42,7 +42,8 @@ public class Main
 					break;
 				case 4: System.out.print("What room length would you like?: ");
 						System.out.println(apart1.getRoomLength(keyboard.nextInt()) + "m");
-				case 5: return;
+				case 5: keyboard.close();
+						return;
 				default: System.out.println();
 						 System.out.println("Please enter a number 1-4");
 				}
@@ -56,6 +57,7 @@ public class Main
 		Scanner keyboard = new Scanner(System.in);
 		System.out.print("Enter " + dimensionIn + ": ");
 		tempDim = keyboard.nextDouble();
+		keyboard.close();
 		return tempDim;
 	}
 }

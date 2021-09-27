@@ -31,4 +31,18 @@ public class EasyScanner
 		char c = sc.next().charAt(0);
 		return c;
 	}
+	
+	public static byte nextByte()
+	{
+		Scanner sc = new Scanner(System.in);
+		byte b = sc.nextByte();
+		return b;
+	}
+	
+	public static long nextLong()
+	{
+		Scanner sc = new Scanner(System.in);
+		long l = sc.nextLong();
+		return l;
+	}
 }

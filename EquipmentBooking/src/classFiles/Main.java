@@ -92,7 +92,6 @@ public class Main
 	
 	static void checkBooking()
 	{
-		
 		System.out.println("Day: ");
 		day = EasyScanner.nextInt();
 		System.out.println("Period ");

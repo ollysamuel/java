@@ -3,7 +3,7 @@ package classList;
 public class Sensor 
 {
 	// declare variables
-	private double pressure;
+	protected double pressure;
 	
 	// constructors
 	public Sensor()

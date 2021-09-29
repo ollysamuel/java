@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class VehicleSearch {
+public class Main {
 
 	public static void main(String[] args) 
 	{

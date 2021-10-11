@@ -35,7 +35,7 @@ public class ChanginFace extends Application
 		leftEye.setStroke(Color.BLUE);
 	
 		// create and configure a smiling mouth
-		Arc mouth = new Arc(125, 150, 45,35, 0, -180);
+		Arc mouth = new Arc(125, 150, 45, 35, 0, -180);
 		mouth.setFill(Color.YELLOW);
 		mouth.setStroke(Color.BLUE);
 		mouth.setType(ArcType.OPEN);
@@ -51,6 +51,9 @@ public class ChanginFace extends Application
 		// create a button that will make the face smile
 		Button smileButton = new Button("Smile");
 		
+		// create a button that will make face think
+		Button thinkButton = new Button("Think");
+		
 		// create a button that will make the face frown
 		Button frownButton = new Button("Frown");
 		
@@ -59,7 +62,7 @@ public class ChanginFace extends Application
 		buttonBox.setAlignment(Pos.CENTER);
 		
 		//add the buttons to the horizontal container
-		buttonBox.getChildren().addAll(smileButton, frownButton);
+		buttonBox.getChildren().addAll(smileButton, thinkButton, frownButton);
 		
 		// create and configure a vertical container to hold the button box and the face group
 		VBox root = new VBox(10);
@@ -73,10 +76,28 @@ public class ChanginFace extends Application
 		Scene scene = new Scene(root, 250, 275, Color.YELLOW);
 		
 		// supply the code that is executed when the smile button is pressed
-		smileButton.setOnAction(e -> mouth.setLength(-180));
+		smileButton.setOnAction(e ->
+			{
+				mouth.setRadiusX(45);
+				mouth.setLength(-180);
+			}
+		);
+		
+		// supply code for think button
+		thinkButton.setOnAction(e ->
+			{
+				mouth.setLength(-150);
+				mouth.setRadiusX(0);
+			}
+		);
 		
 		// supply the code that is executed when the frown button is pressed
-		frownButton.setOnAction(e -> mouth.setLength(180));
+		frownButton.setOnAction(e ->
+			{
+				mouth.setRadiusX(45);
+				mouth.setLength(180);
+			}
+		);
 		
 		// add the scene to the stage, then set the title
 		stage.setScene(scene);

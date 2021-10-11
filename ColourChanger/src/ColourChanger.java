@@ -2,11 +2,10 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
-import javafx.scene.layout.Background;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 public class ColourChanger extends Application
 {
@@ -40,10 +39,16 @@ public class ColourChanger extends Application
 		
 		// Supply code to buttons
 		// Set Blue
-		setBlue.setOnAction(e -> root.setBackground(Background.blue));
+		setBlue.setOnAction(e ->
+		{
+			root.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(0), new Insets(0))));
+		});
 		
 		// Set Red
-		setRed.setOnAction(e -> root.setBackground(Background.red));
+		setRed.setOnAction(e -> 
+		{
+			root.setBackground(new Background(new BackgroundFill(Color.PINK, new CornerRadii(0), new Insets(0))));
+		});
 		
 		// add scene to stage and show stage
 		stage.setScene(scene);

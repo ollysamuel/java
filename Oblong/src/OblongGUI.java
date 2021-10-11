@@ -44,10 +44,21 @@ public class OblongGUI extends Application
 		calculateButton.setText("Calculate");
 		calculateButton.setOnAction( e ->
 		{
+			
 			// check that fields are not empty
 			if(lengthField.getText().isEmpty() || heightField.getText().isEmpty())
 			{
 				display.setText("Length and height must be entered");
+			}
+			else if (Double.parseDouble(lengthField.getText()) == 0 || 
+						Double.parseDouble(heightField.getText()) == 0)
+			{
+				display.setText("Please enter a value more than zero");
+			}
+			else if (Double.parseDouble(lengthField.getText()) ==
+						Double.parseDouble(heightField.getText()))
+			{
+				display.setText("Height and length can't be equal");
 			}
 			else
 			{

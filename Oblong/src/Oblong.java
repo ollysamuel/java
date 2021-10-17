@@ -1,50 +1,67 @@
-
+/** Constructs an oblong shape and returns a range of mathematical calculations
+ * based on its proportions
+ * @author Oliver Samuel
+ * @version 16/10/2021
+ */
 public class Oblong
 {
-	// the attributes
+	// class attributes
 	private double length;
 	private double height;
 
-	// the methods
-
-	// the constructor
+	/** Constructor initialises the length and height of the oblong
+	 * @param lengthIn: length of oblong
+	 * @param heightIn: height of oblong
+	 */
 	public Oblong(double lengthIn, double heightIn)
 	{
 		length = lengthIn;
 		height = heightIn;
 	}
 
-	// this method allows us to read the length attribute
+	/** Gets length dimension
+	 * @return Returns length of oblong
+	 */
 	public double getLength()
 	{
 		return length;
 	}
 
-	// this method allows us to read the height attribute
+	/** Gets height dimension
+	 * @return Returns height of oblong
+	 */
 	public double getHeight()
 	{
 		return height;
 	}
 
-	// this method allows us to write to the length attribute
+	/** Sets a new length for the oblong
+	 * @param lengthIn: new length of oblong
+	 */
 	public void setLength(double lengthIn)
 	{
 		length = lengthIn;
 	}
 
-	// this method allows us to write to the height attribute
+	/** Sets a new height for the oblong
+	 * @param heightIn: new height of oblong
+	 */
 	public void setHeight(double heightIn)
 	{
 		height = heightIn;
 	}
 
-	// this method returns the area of the Oblong
+	/** Calculates the area of oblong
+	 * @return Returns area of oblong (length x height)
+	 */
 	public double calculateArea()
 	{
 		return length * height;
 	}
 
-	// this method returns the perimeter of the Oblong
+	/** Calculates the perimeter of oblong
+	 * @return Returns perimeter of oblong
+	 */
 	public double calculatePerimeter()
 	{
 		return 2 * (length + height);

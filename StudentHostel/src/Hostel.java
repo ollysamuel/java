@@ -45,6 +45,7 @@ public class Hostel extends Application
     private Button addButton = new Button("Add Tenant");
     private Button displayButton =  new  Button("Display Tenants");
     private Button removeButton  = new Button("Remove Tenant");
+    private Button searchButton = new Button("Search");
     private Button saveAndQuitButton  = new Button("Save and Quit");
     private TextArea displayArea1  = new TextArea();
     private Label roomLabel2 = new Label("Room");
@@ -79,7 +80,7 @@ public class Hostel extends Application
        // add components to HBoxes
        roomDetails.getChildren().addAll(roomLabel1, roomField1, nameLabel, nameField);
        tenantButtons.getChildren().addAll(	addButton, displayButton, removeButton, 
-													saveAndQuitButton);
+													saveAndQuitButton, searchButton);
        paymentDetails.getChildren().addAll(	roomLabel2, roomField2, monthLabel, monthField,
  													amountLabel, amountField);
        paymentButtons.getChildren().addAll(paymentButton, listButton);
@@ -149,14 +150,17 @@ public class Hostel extends Application
 											new CornerRadii(10), Insets.EMPTY)));
        listButton.setBackground(	new Background(new BackgroundFill(Color.LIGHTYELLOW, 
 										new CornerRadii(10), Insets.EMPTY)));
+       searchButton.setBackground(  new Background(new BackgroundFill(Color.LIGHTYELLOW,
+    		   							new CornerRadii(10), Insets.EMPTY)));
         
        // call private methods for button event handlers
        addButton.setOnAction(e -> addHandler());
        displayButton.setOnAction(e -> displayHandler() );
        removeButton.setOnAction( e -> removeHandler());
-		paymentButton.setOnAction( e -> paymentHandler());
+       paymentButton.setOnAction( e -> paymentHandler());
        listButton.setOnAction( e -> listHandler());
-		saveAndQuitButton.setOnAction( e -> saveAndQuitHandler());
+       saveAndQuitButton.setOnAction( e -> saveAndQuitHandler());
+       searchButton.setOnAction( e -> searchHandler());
         
        // configure the stage and make the stage visible
        stage.setScene(scene);
@@ -180,7 +184,66 @@ public class Hostel extends Application
         return Integer.parseInt(response);    }
 
 	// event handler methods
-
+    
+    private void searchHandler()
+    {
+    	String roomEntered = roomField1.getText();
+    	// check for errors
+    	if (roomEntered.length() == 0)
+			displayArea1.setText("Please enter a room number");
+    	else
+    	{
+    		int error = 0, num = 0;
+    		for (int i = 0; i < roomEntered.length(); i++)
+    		{
+    			// Checks an integer has been entered
+    			if (roomEntered.charAt(i) < 48 || roomEntered.charAt(i) > 57) 
+    			{
+    				if (roomEntered.charAt(i) == '.') // checks whole number has been entered
+    				{	
+    					for (int j = 0; j < roomEntered.length(); j++)
+    					{
+    						if (roomEntered.charAt(j) >= 48 && roomEntered.charAt(j) <= 57) 
+    							num++;
+    					}
+    					if (num == roomEntered.length() - 1)
+    					{
+    						displayArea1.setText("Please enter a whole number");
+    						error = 1;
+    						break;
+    					}
+    				}
+    				displayArea1.setText("Please enter a positive number");
+    				error = 1;
+    				break;
+    			}
+    			else if (roomEntered.charAt(i) == 48)
+    			{
+    				displayArea1.setText ("Please enter a number higher than 0");
+    				error = 1;
+    				break;
+    			}
+    		}
+    		// Parses input and displays tenant details if validation conditions are met
+    		if (error == 0) 
+    		{
+    			int room = Integer.parseInt(roomEntered);
+    			Tenant tenant = list.search(room);
+    			if (tenant == null)
+    				displayArea1.setText("Room unoccupied");
+    			else
+    			{
+    				for (int i = 0; i <= list.getTotal(); i++)
+    				{
+    					if (tenant.getRoom() == i)
+    						displayArea1.setText("Name: " + list.getTenant(i).getName() + 
+    												"\n\nRoom: " + list.getTenant(i).getRoom());
+    				}
+    			}
+    		}
+    	}
+    }
+    
     private void addHandler()
     {
         String roomEntered =  roomField1.getText();
@@ -268,6 +331,10 @@ public class Hostel extends Application
         {
             displayArea2.setText("Room number " +  roomEntered +  " is empty");
         } 
+        else if(Double.parseDouble(amountEntered) <= 0)
+        {
+        	displayArea2.setText("Please enter a positive amount");
+        }
         else // ok to process payment
         {
             Payment p =  new Payment(monthEntered,Double.parseDouble(amountEntered));

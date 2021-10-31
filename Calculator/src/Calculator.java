@@ -14,7 +14,7 @@ public class Calculator
 {
 	private String answerString = "";
 	private double answer = 0;
-	char operator;
+	char operator = 'e';
 	
 	//constructor
 	public Calculator()
@@ -26,42 +26,49 @@ public class Calculator
 		return answerString;
 	}
 	
-	
 	public double getAnswer()
 	{
 		return answer;
 	}
 	
 	public void calculate(char operationIn)
-	{
-		operator = operationIn;
+	{	
 		double tempNum = Double.parseDouble(answerString);
-		if (operationIn == '+')
-			answer += tempNum;
-		else if (operationIn == '-')
-			answer = answer - tempNum;
-		else if (operationIn == 'x')
-			answer = answer * tempNum;
-		else if (operationIn == '/')
-			answer /= tempNum;
-		//else if (operationIn == '=')
-		//	answer = tempNum;
+		if (answer == 0)
+			answer = tempNum;
+		else
+		{
+			if (operator == '+')
+				answer += tempNum;
+			else if (operator == '-')
+				answer -= tempNum;
+			else if (operator == 'x')
+				answer *= tempNum;
+			else if (operator == '/')
+				answer /= tempNum;
+		}
+		operator = operationIn;
 		answerString = "";
 	}
 	
 	public double equals()
 	{
-		double tempNum2 = Double.parseDouble(answerString);
-		if (operator == '+')
-			answer += tempNum2;
-		else if  (operator == '-')
-			answer -= tempNum2;
-		else if (operator == 'x')
-			answer *= tempNum2;
-		else if (operator == '/')
-			answer /= tempNum2;
+		if (operator == 'e')
+			answer = 0;
 		else
-			answer = tempNum2;
+		{
+			double tempNum2 = Double.parseDouble(answerString);
+			if (operator == '+')
+				answer += tempNum2;
+			else if  (operator == '-')
+				answer -= tempNum2;
+			else if (operator == 'x')
+				answer *= tempNum2;
+			else if (operator == '/')
+				answer /= tempNum2;
+			else
+				answer = tempNum2;
+		}
 		answerString = "";
 		return answer;
 	}
@@ -74,10 +81,8 @@ public class Calculator
 	
 	public void numberButtons(String buttonIn)
 	{
-		answerString = answerString + buttonIn;
+		answerString += buttonIn;
 	}
-	
-	
 	
 	/*
 	static String calculate(String displayIn)
@@ -135,5 +140,4 @@ public class Calculator
 	
 	}
 		*/
-
 }

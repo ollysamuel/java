@@ -169,7 +169,7 @@ public class GUI extends Application
 		});
 		
 		Button equals = new Button("=");
-		equals.setMinSize(width, height);
+		equals.setMinSize((4 * height + 30), height);
 		equals.setOnAction( e -> 
 		{
 			mainDisplay.setText("" + calc.equals());
@@ -190,7 +190,11 @@ public class GUI extends Application
 		
 		// bottom row
 		HBox bottom = new HBox(10);
-		bottom.getChildren().addAll(equals, point, clear);
+		bottom.getChildren().addAll(zero, point, clear);
+		
+		// equals row
+		HBox equalsRow = new HBox(60);
+		equalsRow.getChildren().addAll(equals);
 		
 		// create vbox for number buttons
 		VBox numbers = new VBox(10);
@@ -215,7 +219,7 @@ public class GUI extends Application
 		calculator.setPadding(new Insets(10, 10, 10, 10));
 		calculator.setMaxWidth(((4 * width) + 30));
 		calculator.setAlignment(Pos.CENTER);
-		calculator.getChildren().addAll(screen, allButtons);
+		calculator.getChildren().addAll(screen, allButtons, equalsRow);
 		
 		//create vbox container
 		VBox root = new VBox(10);
@@ -224,7 +228,7 @@ public class GUI extends Application
 				new CornerRadii(10), Insets.EMPTY)));
 		root.getChildren().addAll(calculator);
 		
-		Scene scene = new Scene (root, 300, 300);
+		Scene scene = new Scene (root, 300, 400);
 		stage.setScene(scene);
 		stage.setTitle("Calculator");
 		stage.show();

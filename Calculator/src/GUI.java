@@ -1,3 +1,8 @@
+/** GUI for calculator
+ * @author Olly Samuel
+ * @version 31/10/2021
+ */
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;

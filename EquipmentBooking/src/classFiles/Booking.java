@@ -20,11 +20,11 @@ public class Booking
 	// methods
 	public String getRoom()
 	{
-		return name;
+		return room;
 	}
 	
 	public String getName()
 	{
-		return room;
+		return name;
 	}
 }

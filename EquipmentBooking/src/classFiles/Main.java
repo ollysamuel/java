@@ -1,5 +1,8 @@
 package classFiles;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Main 
 {
 	public static void main(String[] args) 
@@ -60,27 +63,57 @@ public class Main
 	
 	static void makeBooking()
 	{
-		System.out.println("What day would you like to book the equipment? ");
-		day = EasyScanner.nextInt();
-		System.out.println("What period would you like to book the equipment? ");
-		period = EasyScanner.nextInt();
-		System.out.println("Name: ");
-		name = EasyScanner.nextString();
-		System.out.println("Room: ");
-		room = EasyScanner.nextString();
-		Booking person = new Booking(name, room);
-		equipment.makeBooking(day, period, person);
+		try
+		{
+			System.out.println("What day would you like to book the equipment? ");
+			day = EasyScanner.nextInt();
+			System.out.println("What period would you like to book the equipment? ");
+			period = EasyScanner.nextInt();
+			System.out.println("Name: ");
+			name = EasyScanner.nextString();
+			System.out.println("Room: ");
+			room = EasyScanner.nextString();
+			Booking person = new Booking(name, room);
+			equipment.makeBooking(day, period, person);
+		}
+		catch (InputMismatchException e)
+		{
+			System.out.println("ERROR: Please enter a number");
+		}
+		catch (TimeTableException e)
+		{
+			System.out.println("Timetable Error: " + e.getMessage());
+		}
+		catch (Exception e)
+		{
+			System.out.println("Something went wrong");
+		}
 	}
-	
+
 	static void cancelBooking()
 	{
-		System.out.println("Day: ");
-		day = EasyScanner.nextInt();
-		System.out.println("Period: ");
-		period = EasyScanner.nextInt();
-		equipment.cancelBooking(day, period);
+		try
+		{
+			System.out.println("Day: ");
+			day = EasyScanner.nextInt();
+			System.out.println("Period: ");
+			period = EasyScanner.nextInt();
+			equipment.cancelBooking(day, period);
+		}
+		catch (InputMismatchException e)
+		{
+			System.out.println("Please only enter numbers");
+		}
+		catch (TimeTableException e)
+		{
+			System.out.println("Timetable Error: " + e.getMessage());
+		}
+		catch (Exception e)
+		{
+			System.out.println("Something went wrong");
+		}
 	}
-	
+
 	static void checkFree()
 	{
 		System.out.println("Day: ");
@@ -89,14 +122,15 @@ public class Main
 		period = EasyScanner.nextInt();
 		equipment.isFree(day, period);
 	}
-	
+
 	static void checkBooking()
 	{
 		System.out.println("Day: ");
 		day = EasyScanner.nextInt();
 		System.out.println("Period ");
 		period = EasyScanner.nextInt();
-		System.out.println(equipment.getBooking(day, period));
+		System.out.println("Name: " + equipment.getBooking(day, period).get().getName() + "\n" + 
+							"Room: " + equipment.getBooking(day, period).get().getRoom());
 	}
 	
 	static void checkDays()

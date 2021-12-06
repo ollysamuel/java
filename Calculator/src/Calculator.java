@@ -1,36 +1,39 @@
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.*;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
-import javafx.geometry.Pos;
-import javafx.geometry.Insets;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import java.lang.*;
+/** Calculator class to perform calculator functions
+ *  @author Olly Samuel
+ *  @version 1.0
+ */
 
 public class Calculator
 {
 	private String answerString = "";
 	private double answer = 0;
-	char operator = 'e';
+	private char operator = 'e';
 	
-	//constructor
+	/** Constructor for calculator
+	 */
 	public Calculator()
 	{
 	}
 	
+	/** Gets the answer variable as a String
+	 * @return Returns answer as a string
+	 */
 	public String getAnswerString()
 	{
 		return answerString;
 	}
 	
+	/** Gets the answer variable as a double
+	 * @return Returns answer as a double
+	 */
 	public double getAnswer()
 	{
 		return answer;
 	}
 	
+	/** performs calculations of the calculator
+	 *  @param operationIn: The operation that is entered into the calculator GUI
+	 */
 	public void calculate(char operationIn)
 	{	
 		double tempNum = Double.parseDouble(answerString);
@@ -51,10 +54,15 @@ public class Calculator
 		answerString = "";
 	}
 	
+	/** Performs final calculation when equals button is pressed
+	 *  @return Returns final answer as a double
+	 */
 	public double equals()
 	{
 		if (operator == 'e')
-			answer = 0;
+			 answerString = "";
+		else if (operator == 'a')
+			return answer;
 		else
 		{
 			double tempNum2 = Double.parseDouble(answerString);
@@ -68,76 +76,30 @@ public class Calculator
 				answer /= tempNum2;
 			else
 				answer = tempNum2;
+			operator = 'a';
 		}
 		answerString = "";
-		return answer;
+		return Math.round(answer * 100.0) / 100.0;
 	}
 	
+	/** Adds numbers to temporary number string when number button pressed
+	 *  @param buttonIn: number pressed on calculator GUI
+	 */
+	public void numberButtons(String buttonIn)
+	{
+		if (answer == 0)
+			answerString = "";
+		answerString += buttonIn;
+	}
+	
+	/** Resets the calculator
+	 */
 	public void clear()
 	{
 		answerString = "";
 		answer = 0;
+		operator = 'e';
 	}
 	
-	public void numberButtons(String buttonIn)
-	{
-		answerString += buttonIn;
-	}
 	
-	/*
-	static String calculate(String displayIn)
-	{
-		// checks that first and last digits are numbers
-		if (!Character.isDigit(displayIn.charAt(0)) || !Character.isDigit(displayIn.charAt(displayIn.length() - 1)))
-		{
-			return "error 1";
-		}
-		String tempNum = "";
-		String num1 = "";
-		String num2 = "";
-		char operator;
-		double answer = 0;
-		
-		for (int i = 0; i < displayIn.length(); i++)
-		{
-			if (Character.isDigit(displayIn.charAt(i)) || displayIn.charAt(i) == '.')
-			{
-				tempNum += displayIn.charAt(i);
-				num1 = tempNum;
-				return tempNum + "";
-			}
-		}
-		return "hello";
-	}
-			/*
-			else if (displayIn.charAt(i) == '+' || displayIn.charAt(i) == 'x' ||
-						displayIn.charAt(i) == '/' || displayIn.charAt(i) == '-')
-			{
-				operator = displayIn.charAt(i);
-				for (int j = displayIn.charAt(i + 1); j < displayIn.length(); j++)
-				{
-					if (Character.isDigit(displayIn.charAt(j)) || displayIn.charAt(j) == '.')
-					{
-						tempNum += displayIn.charAt(j);
-						num2 = tempNum;
-					}
-				}
-				if (operator == '+')
-					answer = Double.parseDouble(num1) + Double.parseDouble(num2);
-				else if (operator == '-')
-					answer = Double.parseDouble(num1) + Double.parseDouble(num2);
-				else if (operator == 'x')
-					answer = Double.parseDouble(num1) * Double.parseDouble(num2);
-				else if (operator == '/')
-					answer = Double.parseDouble(num1) / Double.parseDouble(num2);
-				else 
-					return "error2";
-			}
-			return "error";
-		}
-		
-		return answer + "";
-	
-	}
-		*/
 }

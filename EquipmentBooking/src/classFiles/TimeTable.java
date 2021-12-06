@@ -1,46 +1,47 @@
 package classFiles;
 
+import java.util.Optional;
+
 public class TimeTable 
 {
 	// booking array
 	private Booking[][] times;
 	
 	// constructor
-	public TimeTable(int daysIn, int periodsIn)
+	public TimeTable(int daysIn, int periodsIn) throws TimeTableException
 	{
-		times = new Booking[daysIn][periodsIn];
+		if (valid(daysIn, periodsIn))
+				times = new Booking[daysIn][periodsIn];
+		else if (!valid(daysIn, periodsIn))
+			throw new TimeTableException("Day and/or time not valid");
+		else
+			throw new TimeTableException("Something went wrong");
 	} 
 	
 	// methods
-	
-	public boolean makeBooking(int dayIn, int periodIn, Booking bookingIn)
+	public void makeBooking(int dayIn, int periodIn, Booking bookingIn) throws TimeTableException
 	{
 		if (!valid(dayIn, periodIn))
-			return false;
+			throw new TimeTableException("Day and/or time not valid");
 		else if (times[dayIn][periodIn] == null)
 		{
 			times[dayIn][periodIn] = bookingIn;
 			System.out.println("Booking for day " + dayIn + " period " + periodIn + " successful.");
-			return true;
 		}
 		else 
-			return false;
+			throw new TimeTableException("Something went wrong");
 	}
 	
-	public boolean cancelBooking(int dayIn, int periodIn)
+	public void cancelBooking(int dayIn, int periodIn) throws TimeTableException
 	{
 		if (!valid(dayIn, periodIn))
-			return false;
+			throw new TimeTableException("Day and time not valid");
 		else if (times[dayIn][periodIn] == null)
-		{
-			System.out.println("No booking is registered at that time");
-			return false;
-		}
+			throw new TimeTableException("No booking is registered at that time");
 		else
 		{
 			times[dayIn][periodIn] = null;
 			System.out.println("Cancellation successful");
-			return true;
 		}
 	}
 	
@@ -60,12 +61,12 @@ public class TimeTable
 		}
 	}
 	
-	public Booking getBooking(int dayIn, int periodIn)
+	public Optional<Booking> getBooking(int dayIn, int periodIn)
 	{
 		if (valid(dayIn, periodIn))
-			return times[dayIn][periodIn];
+			return Optional.of(times[dayIn][periodIn]);
 		else 
-			return null;
+			return Optional.empty();
 	}
 	
 	public int numberOfDays()

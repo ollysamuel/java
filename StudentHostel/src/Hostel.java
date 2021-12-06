@@ -58,9 +58,6 @@ public class Hostel extends Application
     private Button listButton  = new Button("List Payments"); 
     private TextArea displayArea2 =  new TextArea();
 	
-     
-
-    
     @Override
     /** Initialises the screen 
      *  @param stage:   The scene's stage 

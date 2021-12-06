@@ -22,6 +22,10 @@ public class CalTester {
 		
 		System.out.println("final answer: " + calc.equals());
 		System.out.println(calc.getAnswerString());
+		
+		double num = 0.1 + 0.2;
+		double rounded = Math.round(num * 100.0) / 100.0;
+		System.out.println(rounded);
 	}
 
 }

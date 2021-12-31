@@ -30,7 +30,6 @@ import javafx.scene.control.TextInputDialog;
 public class Hostel extends Application
 {
     // the attributes
-    
     private int noOfRooms;
     private TenantList list;
     // WIDTH and HEIGHT of GUI stored as constants 

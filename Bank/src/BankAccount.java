@@ -1,4 +1,4 @@
-public class BankAccount
+public class BankAccount implements Comparable <BankAccount>
 {
     // the attributes
     private String accountNumber;
@@ -48,6 +48,19 @@ public class BankAccount
             balance = balance - amountIn;
             return true; // money was withdrawn successfully
         }
+    }
+    
+    @Override
+    public String toString()
+    {
+    	return "\n\nAccount Number: " + accountNumber + "\nName: " + accountName + "\nBalance: " + balance;
+    }
+    
+    @Override
+    public int compareTo(BankAccount accIn)
+    {
+    	Character initial = accountName.charAt(0);
+    	return initial.compareTo(accIn.getAccountName().charAt(0));
     }
 }
 

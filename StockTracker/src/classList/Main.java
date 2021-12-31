@@ -41,5 +41,9 @@ public class Main
 		
 		// Display the total price of all items in stock
 		System.out.println("Total price: £" + StockList.get(0).calculateTotalPrice());
+		
+		System.out.println(StockList.get(0).toString());
+		
+		System.out.println(StockList.get(0).equals(new StockItem("12345", "apples", 3.23)));
 	}
 }

@@ -1,0 +1,12 @@
+Registration Number: fdfdfdfsdf
+Make: dfdfdf
+Price: 3333.0
+
+Registration Number: dfdfdfd
+Make: ddfdf
+Price: 444.0
+
+Registration Number: fdffdf
+Make: dfdfdf
+Price: 555.0
+

@@ -22,6 +22,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Menu;
+import javafx.scene.control.ComboBox;
 
 /**GUI for the Hostel application
   *@author Charatan and Kans
@@ -32,9 +34,13 @@ public class Hostel extends Application
     // the attributes
     private int noOfRooms;
     private TenantList list;
+    
     // WIDTH and HEIGHT of GUI stored as constants 
     private final int WIDTH = 800;
     private final int HEIGHT = 500;
+    
+    ComboBox<String> month = new ComboBox<>();
+    
     // visual components
     private Label headingLabel = new Label("Hostel Application");
     private Label roomLabel1 = new Label("Room");
@@ -50,17 +56,15 @@ public class Hostel extends Application
     private Label roomLabel2 = new Label("Room");
     private TextField roomField2  = new TextField();
     private Label monthLabel = new Label("Month");
-    private TextField monthField  = new TextField();
+    //private TextField monthField  = new TextField();
     private Label amountLabel = new Label("Amount");
     private TextField amountField =  new TextField();
     private Button paymentButton  = new Button("Make Payment");
     private Button listButton  = new Button("List Payments"); 
     private TextArea displayArea2 =  new TextArea();
-	
-    @Override
-    /** Initialises the screen 
-     *  @param stage:   The scene's stage 
-     */
+    
+  
+    
     public void start(Stage stage)
     {
        noOfRooms = getNumberOfRooms(); // call private method 
@@ -77,7 +81,7 @@ public class Hostel extends Application
        roomDetails.getChildren().addAll(roomLabel1, roomField1, nameLabel, nameField);
        tenantButtons.getChildren().addAll(	addButton, displayButton, removeButton, 
 													saveAndQuitButton, searchButton);
-       paymentDetails.getChildren().addAll(	roomLabel2, roomField2, monthLabel, monthField,
+       paymentDetails.getChildren().addAll(	roomLabel2, roomField2, monthLabel, month,
  													amountLabel, amountField);
        paymentButtons.getChildren().addAll(paymentButton, listButton);
        // create VBox
@@ -312,7 +316,7 @@ public class Hostel extends Application
     private void paymentHandler()
     {
         String roomEntered = roomField2.getText();
-        String monthEntered = monthField.getText();
+        String monthEntered = month.getValue();
         String amountEntered = amountField.getText();
         // check for errors
         if(roomEntered.length()== 0 || monthEntered.length()== 0 || amountEntered.length()== 0)
@@ -379,7 +383,7 @@ public class Hostel extends Application
                 } 
                 displayArea2.appendText("\n" + "Total paid so far :   " + 				
 														nf.format(p.calculateTotalPaid()));
-                monthField.setText("");
+                month.setPromptText("month");
                 amountField.setText("");
             } 
        }

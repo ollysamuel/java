@@ -1,0 +1,26 @@
+.root
+{
+	-fx-padding: 10px;
+	-fx-spacing: 20px;
+	-fx-font-family: sans-serif;
+	-fx-font-weight: bold;
+}
+
+.text-field
+{
+  	-fx-width: 300px;
+	-fx-background-color:red; 
+	-fx-border-style: solid;
+}
+
+.label
+{
+	-fx-min-width: 60px;
+	-fx-padding: 4px;
+}
+
+.button
+{
+	-fx-background-color: lightblue;
+	-fx-border-style: solid;
+}

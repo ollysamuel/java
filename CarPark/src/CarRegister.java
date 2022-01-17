@@ -5,6 +5,7 @@
 
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Objects;
 
 public class CarRegister
 {
@@ -131,5 +132,24 @@ public class CarRegister
 		{
 			throw new CarRegisterException("Capacity must be zero or more");
 		}
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(parked, permit);
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CarRegister other = (CarRegister) obj;
+		return Objects.equals(parked, other.parked) && Objects.equals(permit, other.permit);
 	}
 }
